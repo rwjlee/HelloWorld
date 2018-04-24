@@ -1,0 +1,15 @@
+{% extends 'travel/base.html' %}
+
+{% block body %}
+
+<div class="jumbotron jumbotron-fluid login-bg">
+        <div class="container">
+        <h1 class="display-4 text-center"> Login ...</h1>
+
+{% include 'travel/loginform.html' %}
+
+{% include 'travel/errors.html' %}
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'travel/base.html' %}
+
+{% block body %}
+
+<div class="jumbotron jumbotron-fluid register-bg">
+        <div class="container">
+        <h1 class="display-4 text-center"> Register and Create a new account...</h1>
+
+{% include 'travel/registerform.html' %}
+
+{% include 'travel/errors.html' %}
+</div>
+
+{% endblock %}

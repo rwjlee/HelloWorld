@@ -1,0 +1,53 @@
+<nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+
+        <div class="container">
+    
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'travel:index' %}"><b>Home</b> <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'travel:planes' %}">Planes</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'travel:trains' %}">Trains</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'travel:automobiles' %}">Automobiles</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'travel:boats' %}">Boats</a>
+              </li>
+            
+          </ul>
+
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              {% if request.session.user_id %}
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{ request.session.email }}
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                      <a class="dropdown-item" href="{% url 'bill_tracker:index' %}">Expenses</a>
+                  
+                    <a class="dropdown-item" href="{% url 'travel:logout' %}">Logout</a>
+                  </div>
+              
+              {% else %}
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Account
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="{% url 'travel:register' %}">Register</a>
+                <a class="dropdown-item" href="{% url 'travel:login' %}">Login</a>
+              </div>
+              {% endif %}
+            </li>
+            </div>
+          
+          </ul>
+    
+        </div>
+        </div>
+    </nav>

@@ -1,0 +1,41 @@
+{% extends 'travel/base.html' %}
+
+
+{% block body %}
+
+<div class="container">
+<h1><a href="">Bill Tracker</a></h1>
+
+<form action="{% url 'bill_tracker:add_bill' %}" method='POST'>
+        {% csrf_token %}
+    <div class="form-group row py-2">
+        <input type="text" name="html_desc" class="col-6 ml-3 " placeholder="Description">
+        <input type="text" name="html_amount" class="col-2 ml-2" placeholder="Amount">
+        <button class="btn btn-primary ml-2">Add Bill</button>
+    </div>
+</form>
+<hr>
+
+<div class="row">
+    <div class="col-4"><h5>Description</h5></div>
+    <div class="col-2"><h5>User ID</h5></div>
+    <div class="col-2"><h5>Amount</h5></div>
+</div>
+
+{% for bill in bills %}
+
+    <div class="row">
+        <div class="col-4">{{bill.desc}}</div>
+        <div class="col-2">{{bill.user_id}}</div>
+        <div class="col-2">{{bill.amount}}</div>
+        
+        <a href="{% url 'bill_tracker:edit_page' bill_id=bill.id%}" class="btn btn-warning">Edit</a>
+        <a href="{% url 'bill_tracker:delete_bill' bill_id=bill.id %}" class="btn btn-danger">Delete</a>
+    </div>
+
+{% endfor %}
+
+</div>
+{% include 'travel/errors.html' %}
+
+{% endblock %}
